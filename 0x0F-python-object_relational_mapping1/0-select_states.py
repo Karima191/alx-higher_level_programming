@@ -9,11 +9,8 @@ if __name__ == "__main__":
             passwd=sys.argv[2], db=sys.argv[3], port=3306)
     cur = db.cursor()
     cur.execute("SELECT * FROM states")
-    states = cur.fetchall()
-    for state in states:
-        print(state)
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
         cur.close()
-        try:
-            db.close()
-        except MySQLdb.Error as e:
-            print("Error occurred while closing the database connection:", e)
+        db.close()
